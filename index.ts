@@ -1,6 +1,6 @@
 import { httpServer } from './src/http_server/index';
 import { createWebSocketStream, WebSocketServer } from 'ws';
-import { handler } from './src/handler';
+import { commandHandler } from './src/commandHandler';
 
 const HTTP_PORT = 8181;
 const WEBSOCKET_PORT = 8080;
@@ -15,6 +15,6 @@ wss.on('connection', (ws) => {
   const duplex = createWebSocketStream(ws, { encoding: 'utf8', decodeStrings: false });
 
   duplex.on('data', async (data: string) => {
-    handler(data, duplex);
+    commandHandler(data, duplex);
   });
 });
