@@ -11,7 +11,7 @@ export const commandHandler = async (data: string, duplex: Duplex) => {
       mouseMoveHandler(data, duplex);
       break;
     case 'draw':
-      drawHandler(data);
+      drawHandler(data, duplex);
       break;
     case 'prnt':
       makePrintScreen(duplex);

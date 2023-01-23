@@ -1,21 +1,20 @@
+import { Duplex } from 'stream';
 import { drawCircle } from './drawCircle';
 import { drawRectangle } from './drawRectangle';
 import { drawSquare } from './drawSquare';
 
-export const drawHandler = async (data: string) => {
-  const [command, ...args] = data.split(' ');
-  const distance = parseInt(args[0]);
-  const height = parseInt(args[1]);
+export const drawHandler = async (data: string, duplex: Duplex) => {
+  const [command] = data.split(' ');
 
   switch (command) {
     case 'draw_circle':
-      drawCircle(distance);
+      drawCircle(data, duplex);
       break;
     case 'draw_rectangle':
-      drawRectangle(distance, height);
+      drawRectangle(data, duplex);
       break;
     case 'draw_square':
-      drawSquare(distance);
+      drawSquare(data, duplex);
       break;
   }
 };

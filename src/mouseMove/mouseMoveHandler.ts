@@ -7,16 +7,16 @@ export const mouseMoveHandler = async (data: string, duplex: Duplex) => {
 
   switch (command) {
     case 'mouse_right':
-      mouse.moveRight(distance);
+      mouse.moveRight(distance, duplex);
       break;
     case 'mouse_left':
-      mouse.moveLeft(distance);
+      mouse.moveLeft(distance, duplex);
       break;
     case 'mouse_up':
-      mouse.moveUp(distance);
+      mouse.moveUp(distance, duplex);
       break;
     case 'mouse_down':
-      mouse.moveDown(distance);
+      mouse.moveDown(distance, duplex);
       break;
     case 'mouse_position':
       mouse.getCursorPosition(duplex);
