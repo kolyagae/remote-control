@@ -1,7 +1,8 @@
 import { Button, mouse, straightTo, Point } from '@nut-tree/nut-js';
 
-export const drawCircle = async (radius: number, position: Point) => {
+export const drawCircle = async (radius: number) => {
   await mouse.pressButton(Button.LEFT);
+  const position = await mouse.getPosition();
 
   for (let i = 0; i <= 360; i++) {
     const x = Math.sin((2 * Math.PI * i) / 360) * radius + position.y;
@@ -10,4 +11,5 @@ export const drawCircle = async (radius: number, position: Point) => {
   }
 
   await mouse.releaseButton(Button.LEFT);
+  console.log(`draw_circle ${radius}px`);
 };

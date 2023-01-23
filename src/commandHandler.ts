@@ -1,6 +1,7 @@
 import { Duplex } from 'stream';
 import { drawHandler } from './draw/drawHandler';
-import { mouseMoveHandler } from './navigation/mouseMoveHandler';
+import { mouseMoveHandler } from './mouseMove/mouseMoveHandler';
+import { makePrintScreen } from './printScreen/printScreen';
 
 export const commandHandler = async (data: string, duplex: Duplex) => {
   const [commandFor] = data.split('_');
@@ -11,6 +12,9 @@ export const commandHandler = async (data: string, duplex: Duplex) => {
       break;
     case 'draw':
       drawHandler(data);
+      break;
+    case 'prnt':
+      makePrintScreen(duplex);
       break;
   }
 };
